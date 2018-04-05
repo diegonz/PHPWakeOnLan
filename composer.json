@@ -1,0 +1,47 @@
+{
+  "name": "dbz/wakeonlan",
+  "description": "Wake on LAN from PHP7",
+  "type": "library",
+  "keywords": [
+    "lan",
+    "wake",
+    "network",
+    "wakeonlan",
+    "magic packet"
+  ],
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Diego González"
+    }
+  ],
+  "require": {
+    "php": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "WakeOnLAN\\": "src"
+    },
+    "psr-4": {
+      "WakeOnLAN\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "WakeOnLAN\\": "tests"
+    },
+    "psr-4": {
+      "WakeOnLAN\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": [
+      "phpunit"
+    ],
+    "phpunit": "php vendor/bin/phpunit"
+  }
+}
