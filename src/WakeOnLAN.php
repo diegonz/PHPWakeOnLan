@@ -22,7 +22,7 @@ class WakeOnLAN
      *
      * @return string Given mac address trimmed without spaces and colons
      */
-    public function trimMacAddress(string $macAddressHex)
+    public static function trimMacAddress(string $macAddressHex)
     {
         return trim(str_replace(':', '', $macAddressHex));
     }
@@ -35,9 +35,9 @@ class WakeOnLAN
      *
      * @return bool True if given mac address is valid
      */
-    public function isMacAddressValid(string $macAddressHex)
+    public static function isMacAddressValid(string $macAddressHex)
     {
-        return ctype_xdigit($this->trimMacAddress($macAddressHex));
+        return ctype_xdigit(self::trimMacAddress($macAddressHex));
     }
 
     /**
@@ -47,7 +47,7 @@ class WakeOnLAN
      *
      * @return boolean True if given broadcast address is valid
      */
-    public function isBroadcastAddressValid(string $broadcastAddress)
+    public static function isBroadcastAddressValid(string $broadcastAddress)
     {
         return 0 < preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", trim($broadcastAddress));
     }
@@ -63,7 +63,7 @@ class WakeOnLAN
     private function checkMacAddresses(array $macAddressesHex)
     {
         foreach ($macAddressesHex as $macAddressHex) {
-            if ( ! $this->isMacAddressValid($macAddressHex)) {
+            if ( ! $this::isMacAddressValid($macAddressHex)) {
                 throw new \Exception("Error: Mac address invalid [$macAddressHex]", 2);
             }
         }
@@ -78,7 +78,7 @@ class WakeOnLAN
      */
     private function checkBroadcastAddress(string $broadcastAddress)
     {
-        if ( ! $this->isBroadcastAddressValid($broadcastAddress)) {
+        if ( ! $this::isBroadcastAddressValid($broadcastAddress)) {
             throw new \Exception("Error: Broadcast address invalid [$broadcastAddress]", 3);
         }
     }
@@ -93,7 +93,7 @@ class WakeOnLAN
      */
     private function packMacAddress(string $macAddressHex)
     {
-        return pack('H12', $this->trimMacAddress($macAddressHex));
+        return pack('H12', $this::trimMacAddress($macAddressHex));
     }
 
     /**
