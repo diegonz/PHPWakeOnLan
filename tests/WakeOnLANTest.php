@@ -18,7 +18,7 @@ class WakeOnLANTest extends Test\TestCase
      */
     public function testTrimMacAddress()
     {
-        $this->assertEquals('001B211C7F23', $this->wol->trimMacAddress(" 00:1B:21:1C:7F:23"));
+        $this->assertEquals('001B211C7F23', $this->wol::trimMacAddress(" 00:1B:21:1C:7F:23"));
     }
 
     /**
@@ -27,8 +27,8 @@ class WakeOnLANTest extends Test\TestCase
      */
     public function testIsMacAddressValid()
     {
-        $this->assertTrue($this->wol->isMacAddressValid("00:1B:21:1C:7F:23"));
-        $this->assertFalse($this->wol->isMacAddressValid(" 00:1P:21:1X:7F:23"));
+        $this->assertTrue($this->wol::isMacAddressValid("00:1B:21:1C:7F:23"));
+        $this->assertFalse($this->wol::isMacAddressValid(" 00:1P:21:1X:7F:23"));
     }
 
     /**
@@ -36,8 +36,8 @@ class WakeOnLANTest extends Test\TestCase
      */
     public function testIsBroadcastAddressValid()
     {
-        $this->assertTrue($this->wol->isBroadcastAddressValid("192.168.1.255"));
-        $this->assertFalse($this->wol->isBroadcastAddressValid("192.168.1.33"));
+        $this->assertTrue($this->wol::isBroadcastAddressValid("192.168.1.255"));
+        $this->assertFalse($this->wol::isBroadcastAddressValid("192.168.1.33"));
     }
 
     /**
