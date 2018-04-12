@@ -3,10 +3,9 @@
 Wake on LAN target enabled devices by sending magic packets to them from PHP.
 Send magic packet to one or more target mac addresses through broadcast address.
 
-Example usage:
+## Example usage:
 
 ```php
-
 <?php
 
 require dirname(__DIR__).'/vendor/autoload.php';
@@ -26,12 +25,9 @@ try {
 }
 ```
 
-Example execution output:
+### Example execution output:
 
-```php
-
-<?php
-
+```
 Array
 (
     [00:1B:2C:1C:DF:22] => Array
@@ -49,3 +45,9 @@ Array
         )
 )
 ```
+
+### External links
+
+[Magic Packet Technology](http://support.amd.com/TechDocs/20213.pdf) - 
+White paper describing the specification and implementation of Magic Packet™ 
+technology from AMD, one of its two co-developers.
