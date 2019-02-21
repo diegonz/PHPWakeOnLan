@@ -1,17 +1,13 @@
 <?php
 
-namespace WakeOnLAN;
-
+namespace Diegonz\PHPWakeOnLan;
 
 /**
- * Class WakeOnLAN
+ * Class WakeOnLan
  *
- * Wake up target Wake on Lan enabled device(s) by sending magic packets built based on given mac addresses and through
- * given broadcast address
- *
- * @package WakeOnLAN
+ * @package Diegonz\PHPWakeOnLan
  */
-class WakeOnLAN
+class WakeOnLan
 {
 
     /**
@@ -22,7 +18,7 @@ class WakeOnLAN
      *
      * @return string Given mac address trimmed without spaces and colons
      */
-    public static function trimMacAddress(string $macAddressHex)
+    public static function trimMacAddress(string $macAddressHex): string
     {
         return trim(str_replace(':', '', $macAddressHex));
     }
@@ -35,7 +31,7 @@ class WakeOnLAN
      *
      * @return bool True if given mac address is valid
      */
-    public static function isMacAddressValid(string $macAddressHex)
+    public static function isMacAddressValid(string $macAddressHex): bool
     {
         return ctype_xdigit(self::trimMacAddress($macAddressHex));
     }
@@ -47,7 +43,7 @@ class WakeOnLAN
      *
      * @return boolean True if given broadcast address is valid
      */
-    public static function isBroadcastAddressValid(string $broadcastAddress)
+    public static function isBroadcastAddressValid(string $broadcastAddress): bool
     {
         return 0 < preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", trim($broadcastAddress));
     }
@@ -64,7 +60,7 @@ class WakeOnLAN
     {
         foreach ($macAddressesHex as $macAddressHex) {
             if ( ! $this::isMacAddressValid($macAddressHex)) {
-                throw new \Exception("Error: Mac address invalid [$macAddressHex]", 2);
+                throw new \RuntimeException("Error: Mac address invalid [$macAddressHex]", 2);
             }
         }
     }
@@ -79,7 +75,7 @@ class WakeOnLAN
     private function checkBroadcastAddress(string $broadcastAddress)
     {
         if ( ! $this::isBroadcastAddressValid($broadcastAddress)) {
-            throw new \Exception("Error: Broadcast address invalid [$broadcastAddress]", 3);
+            throw new \RuntimeException("Error: Broadcast address invalid [$broadcastAddress]", 3);
         }
     }
 
@@ -91,7 +87,7 @@ class WakeOnLAN
      *
      * @return string Trimmed mac address string, packed to H12 binary format
      */
-    private function packMacAddress(string $macAddressHex)
+    private function packMacAddress(string $macAddressHex): string
     {
         return pack('H12', $this::trimMacAddress($macAddressHex));
     }
@@ -104,7 +100,7 @@ class WakeOnLAN
      *
      * @return string Built magic packet based on mac address
      */
-    private function buildMagicPacket(string $macAddressHex)
+    private function buildMagicPacket(string $macAddressHex): string
     {
         return str_repeat(chr(0xff), 6).str_repeat($this->packMacAddress($macAddressHex), 16);
     }
@@ -118,7 +114,7 @@ class WakeOnLAN
     private function getUdpBroadcastSocket()
     {
         if ( ! $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP)) {
-            throw new \Exception("Error: Could not open UDP socket", 4);
+            throw new \RuntimeException('Error: Could not open UDP socket', 4);
         }
         socket_set_option($socket, SOL_SOCKET, SO_BROADCAST, 1);
 
@@ -138,11 +134,11 @@ class WakeOnLAN
      * @return int Total bytes sent through socket
      * @throws \Exception If magic packet could not be sent
      */
-    private function sendMagicPacket($socket, string $magicPacket, string $broadcastAddress, int $port)
+    private function sendMagicPacket($socket, string $magicPacket, string $broadcastAddress, int $port): int
     {
         $result = socket_sendto($socket, $magicPacket, strlen($magicPacket), 0, $broadcastAddress, $port);
         if ($result === false) {
-            throw new \Exception("Error: Could not send data through UDP socket", 7);
+            throw new \RuntimeException('Error: Could not send data through UDP socket', 7);
         }
 
         return $result;
@@ -162,21 +158,19 @@ class WakeOnLAN
      *
      * @throws \Exception If target device could noy be woken via magic packet
      */
-    private function wakeUp($socket, string $macAddressHex, string $broadcastAddress, int $port)
+    private function wakeUp($socket, string $macAddressHex, string $broadcastAddress, int $port): array
     {
         $magicPacket = $this->buildMagicPacket($macAddressHex);
         $bytes       = $this->sendMagicPacket($socket, $magicPacket, $broadcastAddress, $port);
         $send_result = ! empty($bytes) && $bytes > 0;
-        $message     = $send_result ? "Magic packet sent" : "0 bytes sent";
+        $message     = $send_result ? 'Magic packet sent' : '0 bytes sent';
         $message     .= " to $macAddressHex through $broadcastAddress";
 
-        $result = [
-            "result"     => $send_result ? "OK" : "KO",
-            "message"    => $message,
-            "bytes_sent" => $bytes,
+        return [
+            'result'     => $send_result ? 'OK' : 'KO',
+            'message'    => $message,
+            'bytes_sent' => $bytes,
         ];
-
-        return $result;
     }
 
     /**
@@ -192,9 +186,9 @@ class WakeOnLAN
      *
      * @throws \Exception
      */
-    public function wake(array $macAddressesHex, string $broadcastAddress = "255.255.255.255", int $port = 7)
+    public function wake(array $macAddressesHex, string $broadcastAddress = '255.255.255.255', int $port = 7): array
     {
-        if ($broadcastAddress != "255.255.255.255") {
+        if ($broadcastAddress !== '255.255.255.255') {
             $this->checkBroadcastAddress($broadcastAddress);
         }
         $this->checkMacAddresses($macAddressesHex);

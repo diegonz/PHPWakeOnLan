@@ -1,6 +1,6 @@
-# WakeOnLAN
+# PHPWakeOnLan
 
-Wake on LAN target enabled devices by sending magic packets to them from PHP.
+Wake on lan target enabled devices by sending magic packets to them from PHP.
 Send magic packet to one or more target mac addresses through broadcast address.
 
 ## Example usage:
@@ -8,17 +8,17 @@ Send magic packet to one or more target mac addresses through broadcast address.
 ```php
 <?php
 
-require dirname(__DIR__).'/vendor/autoload.php';
+require './vendor/autoload.php';
 
-use \WakeOnLAN\WakeOnLAN;
+use \Diegonz\PHPWakeOnLan\WakeOnLan;
 
 $macAddresses     = [
-    "00:1B:2C:1C:DF:22",
-    "01:1C:2C:1C:DF:13",
+    '00:1B:2C:1C:DF:22',
+    '01:1C:2C:1C:DF:13',
 ];
 
 try {
-    $wol = new WakeOnLAN();
+    $wol = new WakeOnLan();
     print_r($wol->wake($macAddresses));
 } catch (Exception $e) {
     var_dump($e->getMessage());

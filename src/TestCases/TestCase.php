@@ -1,27 +1,26 @@
 <?php
 
-namespace WakeOnLAN\Test;
+namespace Diegonz\PHPWakeOnLan\TestCases;
 
-
-use WakeOnLAN\WakeOnLAN;
+use Diegonz\PHPWakeOnLan\WakeOnLan;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
 
     /**
-     * @var \WakeOnLAN\WakeOnLAN Public instance for testing purposes
+     * @var WakeOnLan Public instance for testing purposes
      */
     public $wol;
 
     /**
      * WakeOnLANTestCase constructor.
      *
-     * Creates public WakeOnLAN instance for testing purposes
+     * Creates public PHPWakeOnLan instance for testing purposes
      */
     public function __construct()
     {
         parent::__construct();
-        $this->wol = new WakeOnLAN();
+        $this->wol = new WakeOnLan();
     }
 
     /**

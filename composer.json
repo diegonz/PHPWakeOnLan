@@ -1,11 +1,12 @@
 {
-  "name": "dbz/wakeonlan",
-  "description": "Wake on LAN from PHP7",
+  "name": "diegonz/php-wake-on-lan",
+  "description": "Wake on lan from PHP",
   "type": "library",
   "keywords": [
     "lan",
     "wake",
     "network",
+    "wake on lan",
     "wakeonlan",
     "magic packet"
   ],
@@ -17,25 +18,27 @@
     }
   ],
   "require": {
-    "php": "^7.0"
+    "php": "^7.0",
+      "ext-ctype": "*",
+      "ext-sockets": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.0"
+    "phpunit/phpunit": "^8.0"
   },
   "autoload": {
     "psr-0": {
-      "WakeOnLAN\\": "src"
+      "Diegonz\\PHPWakeOnLan\\": "src"
     },
     "psr-4": {
-      "WakeOnLAN\\": "src"
+      "Diegonz\\PHPWakeOnLan\\": "src"
     }
   },
   "autoload-dev": {
     "psr-0": {
-      "WakeOnLAN\\": "tests"
+      "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
     },
     "psr-4": {
-      "WakeOnLAN\\": "tests"
+      "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
     }
   },
   "scripts": {
