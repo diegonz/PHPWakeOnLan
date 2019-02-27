@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53a40fc28dcf9994181251c28d6b20d9",
+    "content-hash": "5802a6b0f1c8fdf083015b1d83b6a3fe",
     "packages": [],
     "packages-dev": [
         {
@@ -428,16 +428,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.2",
+            "version": "7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "cfca9c5f7f2694ca0c7749ffb142927d9f05250f"
+                "reference": "0317a769a81845c390e19684d9ba25d7f6aa4707"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/cfca9c5f7f2694ca0c7749ffb142927d9f05250f",
-                "reference": "cfca9c5f7f2694ca0c7749ffb142927d9f05250f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/0317a769a81845c390e19684d9ba25d7f6aa4707",
+                "reference": "0317a769a81845c390e19684d9ba25d7f6aa4707",
                 "shasum": ""
             },
             "require": {
@@ -487,7 +487,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-02-15T13:40:27+00:00"
+            "time": "2019-02-26T07:38:26+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1486,7 +1486,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.0",
-        "ext-ctype": "*"
+        "ext-ctype": "*",
+        "ext-sockets": "*"
     },
     "platform-dev": []
 }
