@@ -18,8 +18,8 @@ $macAddresses     = [
 ];
 
 try {
-    $wol = new WakeOnLan();
-    print_r($wol->wake($macAddresses));
+    $wol = new WakeOnLan($macAddresses);
+    print_r($wol->wake());
 } catch (Exception $e) {
     var_dump($e->getMessage());
 }
