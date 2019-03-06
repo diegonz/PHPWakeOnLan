@@ -30,14 +30,15 @@ class MagicPacket
     /**
      * Returns given mac address without spaces and colons
      *
-     * @param string $macAddressHex Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
-     *                              format. Only 0-9 and a-f are allowed
+     * @param string $macAddressHex Array of mac addresses (or a single string)
+     *                              in XX:XX:XX:XX:XX:XX hexadecimal format.
+     *                              Only 0-9 and a-f are allowed.
      *
      * @return string Given mac address trimmed without spaces and colons
      */
     public static function trimMacAddress(string $macAddressHex): string
     {
-        return trim(str_replace(':', '', $macAddressHex));
+        return \trim(\str_replace(':', '', $macAddressHex));
     }
 
     /**
@@ -51,7 +52,7 @@ class MagicPacket
      */
     public static function isMacAddressValid(string $macAddressHex): bool
     {
-        return ctype_xdigit(self::trimMacAddress($macAddressHex));
+        return \ctype_xdigit(self::trimMacAddress($macAddressHex));
     }
 
     /**
@@ -77,7 +78,12 @@ class MagicPacket
      */
     protected function buildMagicPacketString(string $macAddressHex): string
     {
-        return str_repeat(chr(0xff), 6).str_repeat(self::packMacAddress($macAddressHex), 16);
+        // $prefix = pack('H12', str_repeat('FF', 6));
+        $prefix        = \str_repeat(\chr(0xff), 6);
+        $binMacAddress = self::packMacAddress($macAddressHex);
+        $suffix        = \str_repeat($binMacAddress, 16);
+
+        return $prefix.$suffix;
     }
 
     /**
