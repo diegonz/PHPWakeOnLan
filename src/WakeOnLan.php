@@ -57,7 +57,7 @@ class WakeOnLan
             $this->magicPackets[] = new MagicPacket($macAddress);
         }
         if ($broadcastAddress) {
-            if (! self::isBroadcastAddressValid($broadcastAddress)) {
+            if ( ! self::isBroadcastAddressValid($broadcastAddress)) {
                 throw new \RuntimeException("Error: Invalid Broadcast address [$broadcastAddress]", 3);
             }
             $this->broadcastAddress = $broadcastAddress;
@@ -77,7 +77,10 @@ class WakeOnLan
      */
     public static function isBroadcastAddressValid(string $broadcastAddress): bool
     {
-        return 0 < preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", trim($broadcastAddress));
+        $broadcastAddress = \trim($broadcastAddress);
+
+        return ip2long($broadcastAddress)
+               && 0 < \preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", $broadcastAddress);
     }
 
     /**

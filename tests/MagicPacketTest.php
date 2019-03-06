@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class MagicPacketTest
  *
- * @covers \Diegonz\PHPWakeOnLan\MagicPacket
+ * @covers  \Diegonz\PHPWakeOnLan\MagicPacket
  *
  * @package Diegonz\PHPWakeOnLan\Tests
  */
@@ -16,7 +16,7 @@ class MagicPacketTest extends TestCase
 {
 
     /**
-     * @covers MagicPacket::isMacAddressValid()
+     * @covers \Diegonz\PHPWakeOnLan\MagicPacket::isMacAddressValid()
      */
     public function testIsMacAddressValid()
     {
@@ -26,7 +26,7 @@ class MagicPacketTest extends TestCase
     }
 
     /**
-     * @covers MagicPacket::trimMacAddress()
+     * @covers \Diegonz\PHPWakeOnLan\MagicPacket::trimMacAddress()
      */
     public function testTrimMacAddress()
     {
@@ -34,7 +34,7 @@ class MagicPacketTest extends TestCase
     }
 
     /**
-     * @covers MagicPacket::packMacAddress()
+     * @covers \Diegonz\PHPWakeOnLan\MagicPacket::packMacAddress()
      */
     public function testPackMacAddress()
     {
@@ -47,14 +47,15 @@ class MagicPacketTest extends TestCase
     }
 
     /**
-     * @covers MagicPacket::buildMagicPacketString()
+     * @covers \Diegonz\PHPWakeOnLan\MagicPacket::buildMagicPacketString()
      * @throws \Exception
      */
     public function testBuildMagicPacketString()
     {
-        $mac1   = '00:1B:21:1C:8F:23  ';
-        $mac2   = '00:1C:21:1C:8F:27  ';
-        $sample = str_repeat(chr(0xff), 6).str_repeat(pack('H12', '001B211C8F23'), 16);
+        $mac1   = '00:1B:21:1C:8F:23';
+        $mac2   = '00:1C:21:1C:8F:27';
+        $sample = \str_repeat(\chr(0xff), 6)
+                  .\str_repeat(pack('H12', '001B211C8F23'), 16);
 
         $magicPacket1 = new MagicPacket($mac1);
         $magicPacket2 = new MagicPacket($mac2);
