@@ -1,5 +1,7 @@
 # PHPWakeOnLan
 
+![](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)
+
 Wake on lan target enabled devices by sending magic packets to them from PHP.
 Send magic packet to one or more target mac addresses through broadcast address.
 
@@ -48,6 +50,6 @@ Array
 
 ### External links
 
-[Magic Packet Technology](http://support.amd.com/TechDocs/20213.pdf) - 
-White paper describing the specification and implementation of Magic Packet™ 
+[Magic Packet Technology](http://support.amd.com/TechDocs/20213.pdf) -
+White paper describing the specification and implementation of Magic Packet™
 technology from AMD, one of its two co-developers.
