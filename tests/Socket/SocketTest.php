@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class SocketTest
  *
- * @covers \Diegonz\PHPWakeOnLan\Socket
+ * @covers \Diegonz\PHPWakeOnLan\Socket\Socket
  *
  * @package Diegonz\PHPWakeOnLan\Tests\Socket
  */
