@@ -63,5 +63,4 @@ class MagicPacketTest extends TestCase
         $this->assertEquals($sample, $magicPacket1);
         $this->assertNotEquals($sample, $magicPacket2);
     }
-
 }

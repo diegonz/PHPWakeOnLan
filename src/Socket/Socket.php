@@ -17,10 +17,10 @@ class Socket
      */
     public function __construct(int $type)
     {
-        if ( ! \in_array($type, [SOL_TCP, SOL_UDP], true)) {
+        if (! \in_array($type, [SOL_TCP, SOL_UDP], true)) {
             throw new \RuntimeException('Error: Wrong socket type', 4);
         }
-        if ( ! $this->socket = \socket_create(AF_INET, SOCK_DGRAM, $type)) {
+        if (! $this->socket = \socket_create(AF_INET, SOCK_DGRAM, $type)) {
             throw new \RuntimeException('Error: Could not open UDP socket', 4);
         }
     }

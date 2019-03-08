@@ -12,7 +12,7 @@ class UdpBroadcastSocket extends Socket
     {
         parent::__construct(SOL_UDP);
         $optionResult = \socket_set_option($this->socket, SOL_SOCKET, SO_BROADCAST, true);
-        if ( ! $optionResult) {
+        if (! $optionResult) {
             throw new \RuntimeException('Error: Could not set broadcast UDP socket', 4);
         }
     }
