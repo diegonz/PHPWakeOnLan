@@ -57,7 +57,7 @@ class WakeOnLan
             $this->magicPackets[] = new MagicPacket($macAddress);
         }
         if ($broadcastAddress) {
-            if ( ! self::isBroadcastAddressValid($broadcastAddress)) {
+            if (! self::isBroadcastAddressValid($broadcastAddress)) {
                 throw new \RuntimeException("Error: Invalid Broadcast address [$broadcastAddress]", 3);
             }
             $this->broadcastAddress = $broadcastAddress;

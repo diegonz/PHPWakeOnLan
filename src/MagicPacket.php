@@ -103,7 +103,7 @@ class MagicPacket
     {
         $this->macAddress = $macAddress;
 
-        if ( ! self::isMacAddressValid($this->macAddress)) {
+        if (! self::isMacAddressValid($this->macAddress)) {
             throw new \RuntimeException("Error: Mac address invalid [$macAddress]", 2);
         }
         $this->magicPacket = $this->buildMagicPacketString($this->macAddress);
