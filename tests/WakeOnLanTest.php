@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class WakeOnLanTest
  *
- * @covers  \Diegonz\PHPWakeOnLan\WakeOnLan
+ * @covers \Diegonz\PHPWakeOnLan\WakeOnLan
  *
  * @package Diegonz\PHPWakeOnLan\TestCases
  */
@@ -16,7 +16,7 @@ class WakeOnLanTest extends TestCase
 {
 
     /**
-     * @covers WakeOnLan::isBroadcastAddressValid()
+     * @covers \Diegonz\PHPWakeOnLan\WakeOnLan::isBroadcastAddressValid()
      */
     public function testIsBroadcastAddressValid()
     {
