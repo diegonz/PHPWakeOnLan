@@ -1,6 +1,7 @@
 # PHPWakeOnLan
 
 ![](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)
+![StyleCI](https://github.styleci.io/repos/128269954/shield?branch=master)
 
 Wake on lan target enabled devices by sending magic packets to them from PHP.
 Send magic packet to one or more target mac addresses through broadcast address.
