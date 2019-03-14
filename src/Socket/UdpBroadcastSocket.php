@@ -2,6 +2,11 @@
 
 namespace Diegonz\PHPWakeOnLan\Socket;
 
+/**
+ * Class UdpBroadcastSocket
+ *
+ * @package Diegonz\PHPWakeOnLan\Socket
+ */
 class UdpBroadcastSocket extends Socket
 {
 
@@ -13,7 +18,7 @@ class UdpBroadcastSocket extends Socket
         parent::__construct(SOL_UDP);
         $optionResult = \socket_set_option($this->socket, SOL_SOCKET, SO_BROADCAST, true);
         if (! $optionResult) {
-            throw new \RuntimeException('Error: Could not set broadcast UDP socket', 4);
+            throw new \RuntimeException('Error: Could not set broadcast UDP socket.', 5);
         }
     }
 }

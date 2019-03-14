@@ -1,50 +1,66 @@
 {
-  "name": "diegonz/php-wake-on-lan",
-  "description": "Wake on lan from PHP",
-  "type": "library",
-  "keywords": [
-    "lan",
-    "wake",
-    "network",
-    "wake on lan",
-    "wakeonlan",
-    "magic packet"
-  ],
-  "minimum-stability": "stable",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Diego González"
-    }
-  ],
-  "require": {
-    "php": "^7.2",
-      "ext-ctype": "*",
-      "ext-sockets": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^8.0"
-  },
-  "autoload": {
-    "psr-0": {
-      "Diegonz\\PHPWakeOnLan\\": "src"
-    },
-    "psr-4": {
-      "Diegonz\\PHPWakeOnLan\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-0": {
-      "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
-    },
-    "psr-4": {
-      "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "test": [
-      "phpunit"
+    "name": "diegonz/php-wake-on-lan",
+    "description": "Wake on lan target enabled devices by sending magic packets to them from PHP",
+    "keywords": [
+        "lan",
+        "wake",
+        "network",
+        "wake on lan",
+        "wakeonlan",
+        "magic packet"
     ],
-    "phpunit": "php vendor/bin/phpunit"
-  }
+    "homepage": "https://github.com/diegonz/php-wake-on-lan",
+    "license": "MIT",
+    "type": "library",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Diego González",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*",
+        "ext-ctype": "*",
+        "ext-sockets": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Diegonz\\PHPWakeOnLan\\": "src"
+        },
+        "psr-4": {
+            "Diegonz\\PHPWakeOnLan\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
+        },
+        "psr-4": {
+            "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Diegonz\\PHPWakeOnLan\\PHPWakeOnLanServiceProvider"
+            ],
+            "aliases": {
+                "PHPWakeOnLan": "Diegonz\\PHPWakeOnLan\\PHPWakeOnLanFacade"
+            }
+        }
+    }
 }
