@@ -2,6 +2,11 @@
 
 namespace Diegonz\PHPWakeOnLan;
 
+/**
+ * Class MagicPacket
+ *
+ * @package Diegonz\PHPWakeOnLan
+ */
 class MagicPacket
 {
 
@@ -104,7 +109,7 @@ class MagicPacket
         $this->macAddress = $macAddress;
 
         if (! self::isMacAddressValid($this->macAddress)) {
-            throw new \RuntimeException("Error: Mac address invalid [$macAddress]", 2);
+            throw new \RuntimeException("Error: Mac address invalid [$macAddress].", 2);
         }
         $this->magicPacket = $this->buildMagicPacketString($this->macAddress);
     }

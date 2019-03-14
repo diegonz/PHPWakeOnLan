@@ -5,11 +5,11 @@ namespace Diegonz\PHPWakeOnLan;
 use Diegonz\PHPWakeOnLan\Socket\UdpBroadcastSocket;
 
 /**
- * Class WakeOnLan
+ * Class PHPWakeOnLan
  *
  * @package Diegonz\PHPWakeOnLan
  */
-class WakeOnLan
+class PHPWakeOnLan
 {
 
     /**
@@ -41,28 +41,23 @@ class WakeOnLan
     /**
      * WakeOnLan constructor.
      *
-     * @param array    $macAddresses     Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
-     *                                   format. Only 0-9 and a-f are allowed
      * @param string   $broadcastAddress String containing target broadcast address in XXX.XXX.XXX.255 format
      * @param int|null $port             Target port to send magic packet, 7 or 9
-     *
-     * @throws \Exception
      */
     public function __construct(
-        array $macAddresses,
         string $broadcastAddress = null,
         int $port = null
     ) {
-        foreach ($macAddresses as $macAddress) {
-            $this->magicPackets[] = new MagicPacket($macAddress);
-        }
         if ($broadcastAddress) {
             if (! self::isBroadcastAddressValid($broadcastAddress)) {
-                throw new \RuntimeException("Error: Invalid Broadcast address [$broadcastAddress]", 3);
+                throw new \RuntimeException('Error: Invalid Broadcast address ['.$broadcastAddress.'].', 3);
             }
             $this->broadcastAddress = $broadcastAddress;
         }
         if ($port) {
+            if (!\in_array($port, [7, 9], true)) {
+                throw new \RuntimeException('Error: Invalid port ['.$port.']. Must be 7 or 9.', 4);
+            }
             $this->port = $port;
         }
         $this->udpBroadcastSocket = new UdpBroadcastSocket();
@@ -79,19 +74,26 @@ class WakeOnLan
     {
         $broadcastAddress = \trim($broadcastAddress);
 
-        return ip2long($broadcastAddress)
-               && 0 < \preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", $broadcastAddress);
+        return \ip2long($broadcastAddress)
+            && 0 < \preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", $broadcastAddress);
     }
 
     /**
      * Wake up target devices using given mac address(es) to build magic packets
      * and send them to broadcast address
      *
+     * @param array $macAddresses        Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
+     *                                   format. Only 0-9 and a-f are allowed
+     *
      * @return array Detailed results array with result, bytes sent and a message for each given magic packet
      *
+     * @throws \Exception
      */
-    public function wake(): array
+    public function wake(array $macAddresses): array
     {
+        foreach ($macAddresses as $macAddress) {
+            $this->magicPackets[] = new MagicPacket($macAddress);
+        }
         $result = [];
         foreach ($this->magicPackets as $magicPacket) {
             $macAddress = $magicPacket->getMacAddress();

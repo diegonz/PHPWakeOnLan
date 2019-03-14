@@ -1,7 +1,13 @@
 # PHPWakeOnLan
 
-![](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)
+![Build Status](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)
 ![StyleCI](https://github.styleci.io/repos/128269954/shield?branch=master)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/diegonz/php-wake-on-lan.svg?style=flat)](https://packagist.org/packages/diegonz/php-wake-on-lan)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Total Downloads](https://img.shields.io/packagist/dt/diegonz/php-wake-on-lan.svg?style=flat)](https://packagist.org/packages/diegonz/php-wake-on-lan)
+
 
 Wake on lan target enabled devices by sending magic packets to them from PHP.
 
@@ -15,10 +21,12 @@ composer require diegonz/php-wake-on-lan
 
 ## Usage:
 
+Normal PHP usage:
+
 ```php
 <?php
 
-use \Diegonz\PHPWakeOnLan\WakeOnLan;
+use \Diegonz\PHPWakeOnLan\PhpWakeOnLan;
 
 $macAddresses = [
     '00:1B:2C:1C:DF:22',
@@ -26,8 +34,27 @@ $macAddresses = [
 ];
 
 try {
-    $wol = new WakeOnLan($macAddresses);
-    print_r($wol->wake());
+    $wol = new PhpWakeOnLan();
+    print_r($wol->wake($macAddresses));
+} catch (Exception $e) {
+    var_dump($e->getMessage());
+}
+```
+
+Laravel facade usage:
+
+```php
+<?php
+
+use \Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
+
+$macAddresses = [
+    '00:1B:2C:1C:DF:22',
+    '01:1C:2C:1C:DF:13',
+];
+
+try {
+    print_r(PhpWakeOnLan::wake($macAddresses));
 } catch (Exception $e) {
     var_dump($e->getMessage());
 }
