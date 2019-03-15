@@ -11,7 +11,7 @@ build:
             tests:
                 override:
                     - php-scrutinizer-run
-                    - phpcs-run
+                    - phpcs-run ./
         coverage:
             tests:
                 override:
