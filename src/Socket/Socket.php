@@ -3,15 +3,12 @@
 namespace Diegonz\PHPWakeOnLan\Socket;
 
 /**
- * Class Socket
- *
- * @package Diegonz\PHPWakeOnLan\Socket
+ * Class Socket.
  */
 class Socket
 {
-
     /**
-     * @var resource $socket
+     * @var resource
      */
     protected $socket;
 
@@ -31,7 +28,7 @@ class Socket
     }
 
     /**
-     * Close socket
+     * Close socket.
      */
     public function close()
     {
@@ -39,7 +36,7 @@ class Socket
     }
 
     /**
-     * Send string through socket to target address
+     * Send string through socket to target address.
      *
      * @param string $string
      * @param string $address

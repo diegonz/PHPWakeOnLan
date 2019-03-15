@@ -3,18 +3,15 @@
 namespace Diegonz\PhpWakeOnLan;
 
 use Diegonz\PHPWakeOnLan\Console\Wol;
-use Diegonz\PHPWakeOnLan\Http\Controllers\PHPWakeOnLanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Diegonz\PHPWakeOnLan\Http\Controllers\PHPWakeOnLanController;
 
 /**
- * Class PHPWakeOnLanServiceProvider
- *
- * @package Diegonz\PhpWakeOnLan
+ * Class PHPWakeOnLanServiceProvider.
  */
 class PHPWakeOnLanServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      */
