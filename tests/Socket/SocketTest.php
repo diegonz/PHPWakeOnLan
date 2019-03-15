@@ -2,19 +2,16 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests\Socket;
 
-use Diegonz\PHPWakeOnLan\Socket\Socket;
 use PHPUnit\Framework\TestCase;
+use Diegonz\PHPWakeOnLan\Socket\Socket;
 
 /**
- * Class SocketTest
+ * Class SocketTest.
  *
  * @covers \Diegonz\PHPWakeOnLan\Socket\Socket
- *
- * @package Diegonz\PHPWakeOnLan\Tests\Socket
  */
 class SocketTest extends TestCase
 {
-
     /**
      * @covers \Diegonz\PHPWakeOnLan\Socket\Socket::send()
      */

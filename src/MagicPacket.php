@@ -3,20 +3,17 @@
 namespace Diegonz\PHPWakeOnLan;
 
 /**
- * Class MagicPacket
- *
- * @package Diegonz\PHPWakeOnLan
+ * Class MagicPacket.
  */
 class MagicPacket
 {
-
     /**
-     * @var string $magicPacket
+     * @var string
      */
     protected $magicPacket;
 
     /**
-     * @var string $macAddress
+     * @var string
      */
     protected $macAddress;
 
@@ -33,7 +30,7 @@ class MagicPacket
     }
 
     /**
-     * Returns given mac address without spaces and colons
+     * Returns given mac address without spaces and colons.
      *
      * @param string $macAddressHex Array of mac addresses (or a single string)
      *                              in XX:XX:XX:XX:XX:XX hexadecimal format.
@@ -47,7 +44,7 @@ class MagicPacket
     }
 
     /**
-     * Checks mac address validity
+     * Checks mac address validity.
      *
      * @param string $macAddressHex Mac addresses string in XX:XX:XX:XX:XX:XX
      *                              hexadecimal format. Only 0-9 and a-f are
@@ -61,7 +58,7 @@ class MagicPacket
     }
 
     /**
-     * Returns given mac address string packed to H12 binary format
+     * Returns given mac address string packed to H12 binary format.
      *
      * @param string $macAddressHex Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
      *                              format. Only 0-9 and a-f are allowed
@@ -74,7 +71,7 @@ class MagicPacket
     }
 
     /**
-     * Returns magic packet string built based on given mac address
+     * Returns magic packet string built based on given mac address.
      *
      * @param string $macAddressHex Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
      *                              format. Only 0-9 and a-f are allowed
@@ -84,9 +81,9 @@ class MagicPacket
     protected function buildMagicPacketString(string $macAddressHex): string
     {
         // $prefix = pack('H12', str_repeat('FF', 6));
-        $prefix        = \str_repeat(\chr(0xff), 6);
+        $prefix = \str_repeat(\chr(0xff), 6);
         $binMacAddress = self::packMacAddress($macAddressHex);
-        $suffix        = \str_repeat($binMacAddress, 16);
+        $suffix = \str_repeat($binMacAddress, 16);
 
         return $prefix.$suffix;
     }

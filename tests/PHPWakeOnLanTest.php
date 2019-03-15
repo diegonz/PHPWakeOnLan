@@ -2,17 +2,14 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests;
 
-use Diegonz\PHPWakeOnLan\PHPWakeOnLan;
 use PHPUnit\Framework\TestCase;
+use Diegonz\PHPWakeOnLan\PHPWakeOnLan;
 
 /**
- * Class PHPWakeOnLanTest
- *
- * @package Diegonz\PHPWakeOnLan\Tests
+ * Class PHPWakeOnLanTest.
  */
 class PHPWakeOnLanTest extends TestCase
 {
-
     /**
      * @covers \Diegonz\PHPWakeOnLan\PHPWakeOnLan::isBroadcastAddressValid()
      */
