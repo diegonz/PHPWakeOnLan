@@ -2,19 +2,16 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests;
 
-use Diegonz\PHPWakeOnLan\MagicPacket;
 use PHPUnit\Framework\TestCase;
+use Diegonz\PHPWakeOnLan\MagicPacket;
 
 /**
- * Class MagicPacketTest
+ * Class MagicPacketTest.
  *
  * @covers  \Diegonz\PHPWakeOnLan\MagicPacket
- *
- * @package Diegonz\PHPWakeOnLan\Tests
  */
 class MagicPacketTest extends TestCase
 {
-
     /**
      * @covers \Diegonz\PHPWakeOnLan\MagicPacket::isMacAddressValid()
      */
@@ -38,8 +35,8 @@ class MagicPacketTest extends TestCase
      */
     public function testPackMacAddress()
     {
-        $mac1   = '00:1B:21:1C:8F:23  ';
-        $mac2   = '00:1C:21:1C:8F:27  ';
+        $mac1 = '00:1B:21:1C:8F:23  ';
+        $mac2 = '00:1C:21:1C:8F:27  ';
         $sample = pack('H12', '001B211C8F23');
 
         $this->assertEquals($sample, MagicPacket::packMacAddress($mac1));
@@ -52,8 +49,8 @@ class MagicPacketTest extends TestCase
      */
     public function testBuildMagicPacketString()
     {
-        $mac1   = '00:1B:21:1C:8F:23';
-        $mac2   = '00:1C:21:1C:8F:27';
+        $mac1 = '00:1B:21:1C:8F:23';
+        $mac2 = '00:1C:21:1C:8F:27';
         $sample = \str_repeat(\chr(0xff), 6)
                   .\str_repeat(pack('H12', '001B211C8F23'), 16);
 

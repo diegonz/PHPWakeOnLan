@@ -5,13 +5,10 @@ namespace Diegonz\PHPWakeOnLan\Http\Controllers;
 use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
 
 /**
- * Class PHPWakeOnLanController
- *
- * @package Diegonz\PHPWakeOnLan\Http\Controllers
+ * Class PHPWakeOnLanController.
  */
 class PHPWakeOnLanController
 {
-
     /**
      * @param string $macAddress
      *

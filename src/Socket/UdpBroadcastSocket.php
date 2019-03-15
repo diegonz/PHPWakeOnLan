@@ -3,13 +3,10 @@
 namespace Diegonz\PHPWakeOnLan\Socket;
 
 /**
- * Class UdpBroadcastSocket
- *
- * @package Diegonz\PHPWakeOnLan\Socket
+ * Class UdpBroadcastSocket.
  */
 class UdpBroadcastSocket extends Socket
 {
-
     /**
      * UDPBroadcastSocket constructor.
      */

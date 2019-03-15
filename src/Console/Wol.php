@@ -2,20 +2,19 @@
 
 namespace Diegonz\PHPWakeOnLan\Console;
 
-use Diegonz\PHPWakeOnlan\Facades\PHPWakeOnLan;
 use Illuminate\Console\Command;
+use Diegonz\PHPWakeOnlan\Facades\PHPWakeOnLan;
 
 class Wol extends Command
 {
-
     /**
-     * @var string  $signature
+     * @var string 
      */
     protected $signature = 'php-wake-on-lan:wake
                             {mac : Mac addresses string in XX:XX:XX:XX:XX:XX hexadecimal format. Only 0-9 and a-f are allowed}';
 
     /**
-     * @var string $description
+     * @var string
      */
     protected $description = 'Wake on lan target enabled device by sending magic packets to it from PHP';
 
