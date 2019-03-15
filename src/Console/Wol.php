@@ -8,7 +8,7 @@ use Diegonz\PHPWakeOnlan\Facades\PHPWakeOnLan;
 class Wol extends Command
 {
     /**
-     * @var string 
+     * @var string
      */
     protected $signature = 'php-wake-on-lan:wake
                             {mac : Mac addresses string in XX:XX:XX:XX:XX:XX hexadecimal format. Only 0-9 and a-f are allowed}';
