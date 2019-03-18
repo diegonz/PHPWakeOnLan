@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan\Console;
 
-use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
 use Illuminate\Console\Command;
+use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
 
 class Wol extends Command
 {

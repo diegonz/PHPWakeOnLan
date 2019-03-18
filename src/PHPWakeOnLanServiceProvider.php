@@ -3,9 +3,9 @@
 namespace Diegonz\PHPWakeOnLan;
 
 use Diegonz\PHPWakeOnLan\Console\Wol;
-use Diegonz\PHPWakeOnLan\Http\Controllers\PHPWakeOnLanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Diegonz\PHPWakeOnLan\Http\Controllers\PHPWakeOnLanController;
 
 /**
  * Class PHPWakeOnLanServiceProvider.
