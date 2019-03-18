@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan\Console;
 
+use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
 use Illuminate\Console\Command;
-use Diegonz\PHPWakeOnlan\Facades\PHPWakeOnLan;
 
 class Wol extends Command
 {
@@ -35,7 +35,7 @@ class Wol extends Command
      */
     public function handle()
     {
-        $this->info(\print_r(PHPWakeOnLan::wake($this->argument('mac')), true));
+        $this->info(\print_r(PHPWakeOnLan::wake([$this->argument('mac')]), true));
 
         return true;
     }

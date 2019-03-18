@@ -1,11 +1,11 @@
 <?php
 
-namespace Diegonz\PhpWakeOnLan;
+namespace Diegonz\PHPWakeOnLan;
 
 use Diegonz\PHPWakeOnLan\Console\Wol;
+use Diegonz\PHPWakeOnLan\Http\Controllers\PHPWakeOnLanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Diegonz\PHPWakeOnLan\Http\Controllers\PHPWakeOnLanController;
 
 /**
  * Class PHPWakeOnLanServiceProvider.
@@ -66,7 +66,7 @@ class PHPWakeOnLanServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('php-wake-on-lan', function () {
-            return new PHPWakeOnLan(config('wake-on-lan.broadcast_address'));
+            return new PHPWakeOnLan(config('php-wake-on-lan.broadcast_address'));
         });
     }
 }

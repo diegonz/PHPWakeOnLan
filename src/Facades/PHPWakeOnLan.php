@@ -5,7 +5,7 @@ namespace Diegonz\PHPWakeOnLan\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class WakeOnLan.
+ * Class PHPWakeOnLan
  */
 class PHPWakeOnLan extends Facade
 {
