@@ -36,7 +36,7 @@ class PHPWakeOnLan
     protected $udpBroadcastSocket;
 
     /**
-     * WakeOnLan constructor.
+     * PHPWakeOnLan constructor.
      *
      * @param string   $broadcastAddress String containing target broadcast address in XXX.XXX.XXX.255 format
      * @param int|null $port             Target port to send magic packet, 7 or 9
@@ -94,13 +94,13 @@ class PHPWakeOnLan
         $result = [];
         foreach ($this->magicPackets as $magicPacket) {
             $macAddress = $magicPacket->getMacAddress();
-            $bytes = $this->udpBroadcastSocket->send($magicPacket, $macAddress, $this->port);
-            $result = ! empty($bytes) && $bytes > 0;
-            $message = $result ? 'Magic packet sent' : '0 bytes sent';
+            $bytes = $this->udpBroadcastSocket->send($magicPacket, $this->broadcastAddress, $this->port);
+            $sendOk = ! empty($bytes) && $bytes > 0;
+            $message = $sendOk ? 'Magic packet sent' : '0 bytes sent';
             $message .= ' to '.$macAddress.' through '.$this->broadcastAddress;
 
             $result[$macAddress] = [
-                'result'     => $result ? 'OK' : 'KO',
+                'result'     => $sendOk ? 'OK' : 'KO',
                 'message'    => $message,
                 'bytes_sent' => $bytes,
             ];

@@ -30,17 +30,11 @@
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
-        "psr-0": {
-            "Diegonz\\PHPWakeOnLan\\": "src"
-        },
         "psr-4": {
-            "Diegonz\\PHPWakeOnLan\\": "src"
+            "Diegonz\\PHPWakeOnLan\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
-        },
         "psr-4": {
             "Diegonz\\PHPWakeOnLan\\Tests\\": "tests"
         }
@@ -59,7 +53,7 @@
                 "Diegonz\\PHPWakeOnLan\\PHPWakeOnLanServiceProvider"
             ],
             "aliases": {
-                "PHPWakeOnLan": "Diegonz\\PHPWakeOnLan\\PHPWakeOnLanFacade"
+                "PHPWakeOnLan": "Diegonz\\PHPWakeOnLan\\Facades\\WakeOnLan"
             }
         }
     }
