@@ -1,11 +1,9 @@
 # PHPWakeOnLan
 
-![Build Status](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)
-![StyleCI](https://github.styleci.io/repos/128269954/shield?branch=master)
+[![Build Status](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)](https://travis-ci.com/diegonz/PHPWakeOnLan)
+[![StyleCI](https://github.styleci.io/repos/128269954/shield?branch=master)](https://github.styleci.io/repos/128269954)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/diegonz/php-wake-on-lan.svg?style=flat)](https://packagist.org/packages/diegonz/php-wake-on-lan)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/?branch=master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/diegonz/PHPWakeOnLan/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![codecov](https://codecov.io/gh/diegonz/PHPWakeOnLan/branch/master/graph/badge.svg)](https://codecov.io/gh/diegonz/PHPWakeOnLan)
 [![Total Downloads](https://img.shields.io/packagist/dt/diegonz/php-wake-on-lan.svg?style=flat)](https://packagist.org/packages/diegonz/php-wake-on-lan)
 
 
@@ -26,7 +24,7 @@ Normal PHP usage:
 ```php
 <?php
 
-use \Diegonz\PHPWakeOnLan\PhpWakeOnLan;
+use \Diegonz\PHPWakeOnLan\PHPWakeOnLan;
 
 $macAddresses = [
     '00:1B:2C:1C:DF:22',
@@ -34,7 +32,7 @@ $macAddresses = [
 ];
 
 try {
-    $wol = new PhpWakeOnLan();
+    $wol = new PHPWakeOnLan();
     print_r($wol->wake($macAddresses));
 } catch (Exception $e) {
     var_dump($e->getMessage());
@@ -54,7 +52,7 @@ $macAddresses = [
 ];
 
 try {
-    print_r(PhpWakeOnLan::wake($macAddresses));
+    print_r(PHPWakeOnLan::wake($macAddresses));
 } catch (Exception $e) {
     var_dump($e->getMessage());
 }
