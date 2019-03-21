@@ -3,12 +3,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.0] - 2019-02-28
+
+Initial release
+
+## [2.0.0] - 2019-03-21
+
 ### Added
 - Laravel support
-  - Config file
   - Service provider
-  - Facade
   - Console command
+  - Facade
+  - Config
   - View template
   - Package route
 
@@ -23,6 +29,3 @@ All notable changes to this project will be documented in this file.
 ### Removed
 - Non compliant phpunit config flags
 - Removed scrutinizer.yml
-
-## [1.0.0] - 2019-02-28
-Initial release
