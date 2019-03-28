@@ -1,17 +1,15 @@
 # PHPWakeOnLan
 
-[![Build Status](https://travis-ci.com/diegonz/PHPWakeOnLan.svg?branch=master)](https://travis-ci.com/diegonz/PHPWakeOnLan)
-[![StyleCI](https://github.styleci.io/repos/128269954/shield?branch=master)](https://github.styleci.io/repos/128269954)
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/diegonz/php-wake-on-lan.svg?style=flat)](https://packagist.org/packages/diegonz/php-wake-on-lan)
-[![codecov](https://codecov.io/gh/diegonz/PHPWakeOnLan/branch/master/graph/badge.svg)](https://codecov.io/gh/diegonz/PHPWakeOnLan)
-[![Total Downloads](https://img.shields.io/packagist/dt/diegonz/php-wake-on-lan.svg?style=flat)](https://packagist.org/packages/diegonz/php-wake-on-lan)
-
+[![Travis Build Status](https://img.shields.io/travis/diegonz/PHPWakeOnLan/master.svg?style=flat-square)](https://travis-ci.org/diegonz/PHPWakeOnLan)
+[![StyleCI Status](https://github.styleci.io/repos/128269954/shield?branch=master)](https://github.styleci.io/repos/128269954)
+[![Codecov Status](https://img.shields.io/codecov/c/github/diegonz/PHPWakeOnLan.svg?style=flat-square)](https://codecov.io/gh/diegonz/PHPWakeOnLan)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/diegonz/php-wake-on-lan.svg?style=flat-square)](https://packagist.org/packages/diegonz/php-wake-on-lan)
 
 Wake on lan target enabled devices by sending magic packets to them from PHP.
 
 ## Installation
 
-Require the package using [composer](https://getcomposer.org/).
+Require the package using [composer](https://getcomposer.org/):
 
 ```bash
 composer require diegonz/php-wake-on-lan
@@ -79,16 +77,33 @@ Array
 )
 ```
 
-## External links
+### Testing
 
-[Magic Packet Technology](http://support.amd.com/TechDocs/20213.pdf) -
-White paper describing the specification and implementation of Magic Packet™
-technology from AMD, one of its two co-developers.
+``` bash
+composer test
+```
+
+### Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
+## External links
+
+[Magic Packet Technology](http://support.amd.com/TechDocs/20213.pdf) -
+
+White paper describing the specification and implementation of Magic Packet™
+technology from AMD, one of its two co-developers.
+
+## Credits
+
+- [Diego González](https://github.com/diegonz)
+
 ## License
+
 The MIT License ([MIT](./LICENSE.md)). Please see license file for more information.
