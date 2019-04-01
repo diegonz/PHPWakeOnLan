@@ -4,10 +4,8 @@
     "keywords": [
         "lan",
         "wake",
-        "network",
-        "wake on lan",
         "wakeonlan",
-        "magic packet"
+        "magicpacket"
     ],
     "homepage": "https://github.com/diegonz/php-wake-on-lan",
     "license": "MIT",
@@ -21,7 +19,6 @@
     ],
     "require": {
         "php": "^7.1.8",
-        "illuminate/support": "5.8.*",
         "ext-ctype": "*",
         "ext-sockets": "*"
     },
@@ -52,7 +49,6 @@
                 "Diegonz\\PHPWakeOnLan\\PHPWakeOnLanServiceProvider"
             ],
             "aliases": {
-                "WakeOnLan": "Diegonz\\PHPWakeOnLan\\Facades\\PHPWakeOnLan",
                 "PHPWakeOnLan": "Diegonz\\PHPWakeOnLan\\Facades\\PHPWakeOnLan"
             }
         }

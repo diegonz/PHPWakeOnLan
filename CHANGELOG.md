@@ -27,5 +27,11 @@ Initial release
 - Updated README
 
 ### Removed
-- Non compliant phpunit config flags
+- Removed non compliant phpunit config flags
 - Removed scrutinizer.yml
+
+## [2.1.0] - 2019-04-01
+
+### Removed
+- Removed Illuminate/Support library dependency
+- Removed redundant laravel facade alias
