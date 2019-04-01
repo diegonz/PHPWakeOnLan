@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan;
 
-use Diegonz\PHPWakeOnLan\Socket\UdpBroadcastSocket;
 use RuntimeException;
+use Diegonz\PHPWakeOnLan\Socket\UdpBroadcastSocket;
 
 /**
  * Class PHPWakeOnLan.
