@@ -35,7 +35,7 @@ class Wol extends Command
      */
     public function handle()
     {
-        $this->info(\print_r(PHPWakeOnLan::wake([$this->argument('mac')]), true));
+        $this->info(print_r(PHPWakeOnLan::wake([$this->argument('mac')]), true));
 
         return true;
     }

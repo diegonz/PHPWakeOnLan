@@ -2,6 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan;
 
+use RuntimeException;
+
 /**
  * Class MagicPacket.
  */
@@ -40,7 +42,7 @@ class MagicPacket
      */
     public static function trimMacAddress(string $macAddressHex): string
     {
-        return \trim(\str_replace(':', '', $macAddressHex));
+        return trim(str_replace(':', '', $macAddressHex));
     }
 
     /**
@@ -54,7 +56,7 @@ class MagicPacket
      */
     public static function isMacAddressValid(string $macAddressHex): bool
     {
-        return \ctype_xdigit(self::trimMacAddress($macAddressHex));
+        return ctype_xdigit(self::trimMacAddress($macAddressHex));
     }
 
     /**
@@ -81,9 +83,9 @@ class MagicPacket
     protected function buildMagicPacketString(string $macAddressHex): string
     {
         // $prefix = pack('H12', str_repeat('FF', 6));
-        $prefix = \str_repeat(\chr(0xff), 6);
+        $prefix = str_repeat(chr(0xff), 6);
         $binMacAddress = self::packMacAddress($macAddressHex);
-        $suffix = \str_repeat($binMacAddress, 16);
+        $suffix = str_repeat($binMacAddress, 16);
 
         return $prefix.$suffix;
     }
@@ -101,12 +103,12 @@ class MagicPacket
      *
      * @throws \Exception
      */
-    public function setMacAddress(string $macAddress)
+    public function setMacAddress(string $macAddress): void
     {
         $this->macAddress = $macAddress;
 
         if (! self::isMacAddressValid($this->macAddress)) {
-            throw new \RuntimeException("Error: Mac address invalid [$macAddress].", 2);
+            throw new RuntimeException("Error: Mac address invalid [$macAddress].", 2);
         }
         $this->magicPacket = $this->buildMagicPacketString($this->macAddress);
     }

@@ -3,6 +3,7 @@
 namespace Diegonz\PHPWakeOnLan;
 
 use Diegonz\PHPWakeOnLan\Socket\UdpBroadcastSocket;
+use RuntimeException;
 
 /**
  * Class PHPWakeOnLan.
@@ -47,13 +48,13 @@ class PHPWakeOnLan
     ) {
         if ($broadcastAddress) {
             if (! self::isBroadcastAddressValid($broadcastAddress)) {
-                throw new \RuntimeException('Error: Invalid Broadcast address ['.$broadcastAddress.'].', 3);
+                throw new RuntimeException('Error: Invalid Broadcast address ['.$broadcastAddress.'].', 3);
             }
             $this->broadcastAddress = $broadcastAddress;
         }
         if ($port) {
-            if (! \in_array($port, [7, 9], true)) {
-                throw new \RuntimeException('Error: Invalid port ['.$port.']. Must be 7 or 9.', 4);
+            if (! in_array($port, [7, 9], true)) {
+                throw new RuntimeException('Error: Invalid port ['.$port.']. Must be 7 or 9.', 4);
             }
             $this->port = $port;
         }
@@ -69,10 +70,10 @@ class PHPWakeOnLan
      */
     public static function isBroadcastAddressValid(string $broadcastAddress): bool
     {
-        $broadcastAddress = \trim($broadcastAddress);
+        $broadcastAddress = trim($broadcastAddress);
 
-        return \ip2long($broadcastAddress)
-            && 0 < \preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", $broadcastAddress);
+        return ip2long($broadcastAddress)
+            && 0 < preg_match("/^[1,2]\d{1,2}\.[1,2]\d{1,2}\.[1,2]\d{0,2}\.255$/", $broadcastAddress);
     }
 
     /**

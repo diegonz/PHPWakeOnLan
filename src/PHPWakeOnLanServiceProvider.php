@@ -15,7 +15,7 @@ class PHPWakeOnLanServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*
          * Optional methods to load your package assets
@@ -59,13 +59,13 @@ class PHPWakeOnLanServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/php-wake-on-lan.php', 'php-wake-on-lan');
 
         // Register the main class to use with the facade
-        $this->app->singleton('php-wake-on-lan', function () {
+        $this->app->singleton('php-wake-on-lan', static function () {
             return new PHPWakeOnLan(config('php-wake-on-lan.broadcast_address'));
         });
     }

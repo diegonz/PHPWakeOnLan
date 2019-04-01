@@ -3,9 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.0.0] - 2019-02-28
+## [2.1.0] - 2019-04-01
 
-Initial release
+### Removed
+- Removed Illuminate/Support library dependency
+- Removed redundant laravel facade alias
 
 ## [2.0.0] - 2019-03-21
 
@@ -30,8 +32,6 @@ Initial release
 - Removed non compliant phpunit config flags
 - Removed scrutinizer.yml
 
-## [2.1.0] - 2019-04-01
+## [1.0.0] - 2019-02-28
 
-### Removed
-- Removed Illuminate/Support library dependency
-- Removed redundant laravel facade alias
+Initial release

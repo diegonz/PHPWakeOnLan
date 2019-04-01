@@ -2,6 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan\Socket;
 
+use RuntimeException;
+
 /**
  * Class Socket.
  */
@@ -19,20 +21,20 @@ class Socket
      */
     public function __construct(int $type)
     {
-        if (! \in_array($type, [SOL_TCP, SOL_UDP], true)) {
-            throw new \RuntimeException('Error: Wrong socket type', 4);
+        if (! in_array($type, [SOL_TCP, SOL_UDP], true)) {
+            throw new RuntimeException('Error: Wrong socket type', 4);
         }
-        if (! $this->socket = \socket_create(AF_INET, SOCK_DGRAM, $type)) {
-            throw new \RuntimeException('Error: Could not open UDP socket.', 6);
+        if (! $this->socket = socket_create(AF_INET, SOCK_DGRAM, $type)) {
+            throw new RuntimeException('Error: Could not open UDP socket.', 6);
         }
     }
 
     /**
      * Close socket.
      */
-    public function close()
+    public function close(): void
     {
-        \socket_close($this->socket);
+        socket_close($this->socket);
     }
 
     /**
@@ -46,9 +48,9 @@ class Socket
      */
     public function send(string $string, string $address, int $port): int
     {
-        $result = \socket_sendto($this->socket, $string, \strlen($string), 0, $address, $port);
+        $result = socket_sendto($this->socket, $string, strlen($string), 0, $address, $port);
         if ($result === false) {
-            throw new \RuntimeException('Error: Could not send data through socket.', 7);
+            throw new RuntimeException('Error: Could not send data through socket.', 7);
         }
 
         return $result;
