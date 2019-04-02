@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Diegonz\PHPWakeOnLan\PHPWakeOnLan;
 
 /**
- * Class PHPWakeOnLanTest
+ * Class PHPWakeOnLanTest.
  *
  * @covers \Diegonz\PHPWakeOnLan\PHPWakeOnLan
  */

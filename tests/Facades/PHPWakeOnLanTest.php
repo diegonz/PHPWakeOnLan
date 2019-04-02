@@ -2,17 +2,16 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests\Facades;
 
-use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
 use PHPUnit\Framework\TestCase;
+use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
 
 /**
- * Class PHPWakeOnLanTest
+ * Class PHPWakeOnLanTest.
  *
  * @covers \Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan
  */
 class PHPWakeOnLanTest extends TestCase
 {
-
     /**
      * @covers \Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan::getFacadeAccessor()
      */
