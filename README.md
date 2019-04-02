@@ -77,6 +77,14 @@ Array
 )
 ```
 
+#### Laravel package config
+
+You can publish laravel package configuration file running the command below:
+
+```bash
+php artisan vendor:publish --provider="Diegonz\PHPWakeOnLan\PHPWakeOnLanServiceProvider" --tag="config"
+```
+
 ### Testing
 
 ``` bash

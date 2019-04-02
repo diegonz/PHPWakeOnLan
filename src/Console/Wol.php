@@ -19,16 +19,6 @@ class Wol extends Command
     protected $description = 'Wake on lan target enabled device by sending magic packets to it from PHP';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

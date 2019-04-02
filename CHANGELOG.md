@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Removed
+
+- Removed Laravel package route, view and controller
+
 ## [2.1.0] - 2019-04-01
 
 ### Removed

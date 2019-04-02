@@ -46,18 +46,16 @@ class PHPWakeOnLan
         string $broadcastAddress = null,
         int $port = null
     ) {
-        if ($broadcastAddress) {
-            if (! self::isBroadcastAddressValid($broadcastAddress)) {
-                throw new RuntimeException('Error: Invalid Broadcast address ['.$broadcastAddress.'].', 3);
-            }
-            $this->broadcastAddress = $broadcastAddress;
+        $this->broadcastAddress = $broadcastAddress ?? $this->broadcastAddress;
+        if (! self::isBroadcastAddressValid($this->broadcastAddress)) {
+            throw new RuntimeException('Error: Invalid Broadcast address ['.$broadcastAddress.'].', 3);
         }
-        if ($port) {
-            if (! in_array($port, [7, 9], true)) {
-                throw new RuntimeException('Error: Invalid port ['.$port.']. Must be 7 or 9.', 4);
-            }
-            $this->port = $port;
+
+        $this->port = $port ?? $this->port;
+        if (! in_array($this->port, [7, 9], true)) {
+            throw new RuntimeException('Error: Invalid port ['.$port.']. Must be 7 or 9.', 4);
         }
+
         $this->udpBroadcastSocket = new UdpBroadcastSocket();
     }
 
