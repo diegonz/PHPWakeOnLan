@@ -15,13 +15,14 @@ class PHPWakeOnLanServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Registering package CLI commands.
         if ($this->app->runningInConsole()) {
+            // Registering package CLI commands.
             $this->commands([Wol::class]);
+            // Publishing config
+            $this->publishes([
+                __DIR__.'/../config/php-wake-on-lan.php' => config_path('php-wake-on-lan.php'),
+            ], 'config');
         }
-
-        // Publishing config
-        $this->publishes([__DIR__.'/../config/php-wake-on-lan.php' => config_path('php-wake-on-lan.php')], 'config');
     }
 
     /**
