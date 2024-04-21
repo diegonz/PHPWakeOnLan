@@ -2,6 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan;
 
+use RuntimeException;
+
 class CidrNetwork
 {
     /** @var string $networkAddress */
@@ -23,9 +25,22 @@ class CidrNetwork
             $subnetMask = $this->getSubnetMaskFromCidrBits($subnetMask);
         }
 
+        if (! $this->validIpv4Address($ipAddress)) {
+            throw new RuntimeException("Invalid IPv4 IP Address: {$ipAddress}");
+        }
+
+        if (! $this->validIpv4Address($subnetMask)) {
+            throw new RuntimeException("Invalid IPv4 Subnet Mask: {$subnetMask}");
+        }
+
         $this->subnetMask = $subnetMask;
         $this->networkAddress = $this->calculateNetworkAddress($ipAddress, $subnetMask);
         $this->broadcastAddress = $this->calculateBroadcastAddress($ipAddress, $subnetMask);
+    }
+
+    protected function validIpv4Address(string $ipAddress): bool
+    {
+        return (bool) filter_var($ipAddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 
     protected function calculateBroadcastAddress(string $networkAddress, string $subnetMask): string

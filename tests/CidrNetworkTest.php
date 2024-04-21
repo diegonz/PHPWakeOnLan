@@ -71,4 +71,16 @@ class CidrNetworkTest extends TestCase
         $this->assertSame('192.168.0.1', $cidrNetwork->getNetworkAddress());
         $this->assertSame('192.168.0.1', $cidrNetwork->getBroadcastAddress());
     }
+
+    public function testItValidatesTheIpAddress(): void
+    {
+        $this->expectExceptionMessage('Invalid IPv4 IP Address: aaa');
+        CidrNetwork::make('aaa');
+    }
+
+    public function testItValidatesTheSubnetMask(): void
+    {
+        $this->expectExceptionMessage('Invalid IPv4 Subnet Mask: aaa');
+        CidrNetwork::make('192.168.0.1', 'aaa');
+    }
 }
