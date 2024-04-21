@@ -52,4 +52,23 @@ class CidrNetworkTest extends TestCase
         $this->assertSame('192.168.0.0', $cidrNetwork->getNetworkAddress());
         $this->assertSame('192.168.255.255', $cidrNetwork->getBroadcastAddress());
     }
+
+    public function testItInterpretsCidrSubnetMaskBits(): void
+    {
+        $cidrNetwork = CidrNetwork::make('192.168.0.1', 24);
+        $this->assertSame('255.255.255.0', $cidrNetwork->getSubnetMask());
+        $this->assertSame('192.168.0.0', $cidrNetwork->getNetworkAddress());
+        $this->assertSame('192.168.0.255', $cidrNetwork->getBroadcastAddress());
+
+        $cidrNetwork = CidrNetwork::make('192.168.0.1', 32);
+        $this->assertSame('255.255.255.255', $cidrNetwork->getSubnetMask());
+        $this->assertSame('192.168.0.1', $cidrNetwork->getNetworkAddress());
+        $this->assertSame('192.168.0.1', $cidrNetwork->getBroadcastAddress());
+
+        // Caps the bits at 32
+        $cidrNetwork = CidrNetwork::make('192.168.0.1', 64);
+        $this->assertSame('255.255.255.255', $cidrNetwork->getSubnetMask());
+        $this->assertSame('192.168.0.1', $cidrNetwork->getNetworkAddress());
+        $this->assertSame('192.168.0.1', $cidrNetwork->getBroadcastAddress());
+    }
 }
