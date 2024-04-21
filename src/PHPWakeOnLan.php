@@ -80,12 +80,13 @@ class PHPWakeOnLan
      *
      * @param array $macAddresses        Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
      *                                   format. Only 0-9 and a-f are allowed
+     * @param CidrNetwork|null $cidrNetwork CIDR Network DTO to be able to use CIDR Network Broadcast Addresses.
      *
      * @return array Detailed results array with result, bytes sent and a message for each given magic packet
      *
      * @throws \Exception
      */
-    public function wake(array $macAddresses): array
+    public function wake(array $macAddresses, ?CidrNetwork $cidrNetwork = null): array
     {
         foreach ($macAddresses as $macAddress) {
             $this->magicPackets[] = new MagicPacket($macAddress);
@@ -93,10 +94,10 @@ class PHPWakeOnLan
         $result = [];
         foreach ($this->magicPackets as $magicPacket) {
             $macAddress = $magicPacket->getMacAddress();
-            $bytes = $this->udpBroadcastSocket->send($magicPacket, $this->broadcastAddress, $this->port);
+            $bytes = $this->udpBroadcastSocket->send($magicPacket, $cidrNetwork ? $cidrNetwork->getBroadcastAddress() : $this->broadcastAddress, $this->port);
             $sendOk = ! empty($bytes) && $bytes > 0;
             $message = $sendOk ? 'Magic packet sent' : '0 bytes sent';
-            $message .= ' to '.$macAddress.' through '.$this->broadcastAddress;
+            $message .= ' to '.$macAddress.' through '. ($cidrNetwork ? $cidrNetwork->getBroadcastAddress() : $this->broadcastAddress);
 
             $result[$macAddress] = [
                 'result'     => $sendOk ? 'OK' : 'KO',
