@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests\Socket;
 
-use PHPUnit\Framework\TestCase;
 use Diegonz\PHPWakeOnLan\Socket\Socket;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SocketTest.

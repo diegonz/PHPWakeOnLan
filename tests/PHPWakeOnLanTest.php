@@ -3,8 +3,8 @@
 namespace Diegonz\PHPWakeOnLan\Tests;
 
 use Diegonz\PHPWakeOnLan\CidrNetwork;
-use PHPUnit\Framework\TestCase;
 use Diegonz\PHPWakeOnLan\PHPWakeOnLan;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PHPWakeOnLanTest.
@@ -24,6 +24,7 @@ class PHPWakeOnLanTest extends TestCase
 
     /**
      * @covers \Diegonz\PHPWakeOnLan\PHPWakeOnLan::wake()
+     *
      * @throws \Exception
      */
     public function testWake(): void
@@ -39,7 +40,7 @@ class PHPWakeOnLanTest extends TestCase
     {
         /**
          * Network address: 192.168.50.0
-         * Broadcast Address: 192.168.50.3
+         * Broadcast Address: 192.168.50.3.
          */
         $cidrNetwork = CidrNetwork::make('192.168.50.1', '255.255.255.252');
 
@@ -49,7 +50,7 @@ class PHPWakeOnLanTest extends TestCase
         $this->assertNotEmpty($result);
         $this->assertArrayHasKey('message', $result);
         $this->assertSame(
-            "Magic packet sent to 00:1B:2C:1C:DF:22 through 192.168.50.3",
+            'Magic packet sent to 00:1B:2C:1C:DF:22 through 192.168.50.3',
             $result['message']
         );
     }

@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests\Facades;
 
-use PHPUnit\Framework\TestCase;
 use Diegonz\PHPWakeOnLan\Facades\PHPWakeOnLan;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PHPWakeOnLanTest.

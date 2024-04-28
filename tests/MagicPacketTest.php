@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Diegonz\PHPWakeOnLan\MagicPacket;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class MagicPacketTest.
@@ -45,13 +45,14 @@ class MagicPacketTest extends TestCase
 
     /**
      * @covers \Diegonz\PHPWakeOnLan\MagicPacket::buildMagicPacketString()
+     *
      * @throws \Exception
      */
     public function testBuildMagicPacketString(): void
     {
         $mac1 = '00:1B:21:1C:8F:23';
         $mac2 = '00:1C:21:1C:8F:27';
-        $sample = str_repeat(chr(0xff), 6)
+        $sample = str_repeat(chr(0xFF), 6)
                   .str_repeat(pack('H12', '001B211C8F23'), 16);
 
         $magicPacket1 = new MagicPacket($mac1);
