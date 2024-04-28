@@ -22,7 +22,7 @@ class MagicPacket
     /**
      * MagicPacket constructor.
      *
-     * @param string $macAddress
+     * @param  string  $macAddress
      *
      * @throws \Exception
      */
@@ -34,10 +34,9 @@ class MagicPacket
     /**
      * Returns given mac address without spaces and colons.
      *
-     * @param string $macAddressHex Array of mac addresses (or a single string)
-     *                              in XX:XX:XX:XX:XX:XX hexadecimal format.
-     *                              Only 0-9 and a-f are allowed.
-     *
+     * @param  string  $macAddressHex  Array of mac addresses (or a single string)
+     *                                 in XX:XX:XX:XX:XX:XX hexadecimal format.
+     *                                 Only 0-9 and a-f are allowed.
      * @return string Given mac address trimmed without spaces and colons
      */
     public static function trimMacAddress(string $macAddressHex): string
@@ -48,10 +47,9 @@ class MagicPacket
     /**
      * Checks mac address validity.
      *
-     * @param string $macAddressHex Mac addresses string in XX:XX:XX:XX:XX:XX
-     *                              hexadecimal format. Only 0-9 and a-f are
-     *                              allowed.
-     *
+     * @param  string  $macAddressHex  Mac addresses string in XX:XX:XX:XX:XX:XX
+     *                                 hexadecimal format. Only 0-9 and a-f are
+     *                                 allowed.
      * @return bool True if given mac address is valid
      */
     public static function isMacAddressValid(string $macAddressHex): bool
@@ -62,9 +60,8 @@ class MagicPacket
     /**
      * Returns given mac address string packed to H12 binary format.
      *
-     * @param string $macAddressHex Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
-     *                              format. Only 0-9 and a-f are allowed
-     *
+     * @param  string  $macAddressHex  Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
+     *                                 format. Only 0-9 and a-f are allowed
      * @return string Trimmed mac address string, packed to H12 binary format
      */
     public static function packMacAddress(string $macAddressHex): string
@@ -75,15 +72,14 @@ class MagicPacket
     /**
      * Returns magic packet string built based on given mac address.
      *
-     * @param string $macAddressHex Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
-     *                              format. Only 0-9 and a-f are allowed
-     *
+     * @param  string  $macAddressHex  Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
+     *                                 format. Only 0-9 and a-f are allowed
      * @return string Built magic packet based on mac address
      */
     protected function buildMagicPacketString(string $macAddressHex): string
     {
         // $prefix = pack('H12', str_repeat('FF', 6));
-        $prefix = str_repeat(chr(0xff), 6);
+        $prefix = str_repeat(chr(0xFF), 6);
         $binMacAddress = self::packMacAddress($macAddressHex);
         $suffix = str_repeat($binMacAddress, 16);
 
@@ -99,7 +95,7 @@ class MagicPacket
     }
 
     /**
-     * @param string $macAddress
+     * @param  string  $macAddress
      *
      * @throws \Exception
      */

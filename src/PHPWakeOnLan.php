@@ -2,8 +2,8 @@
 
 namespace Diegonz\PHPWakeOnLan;
 
-use RuntimeException;
 use Diegonz\PHPWakeOnLan\Socket\UdpBroadcastSocket;
+use RuntimeException;
 
 /**
  * Class PHPWakeOnLan.
@@ -39,8 +39,8 @@ class PHPWakeOnLan
     /**
      * PHPWakeOnLan constructor.
      *
-     * @param string   $broadcastAddress String containing target broadcast address in XXX.XXX.XXX.255 format
-     * @param int|null $port             Target port to send magic packet, 7 or 9
+     * @param  string  $broadcastAddress  String containing target broadcast address in XXX.XXX.XXX.255 format
+     * @param  int|null  $port  Target port to send magic packet, 7 or 9
      */
     public function __construct(
         string $broadcastAddress = null,
@@ -62,8 +62,7 @@ class PHPWakeOnLan
     /**
      * Perform a simple IPV4 broadcast address validation.
      *
-     * @param string $broadcastAddress String containing target broadcast address in XXX.XXX.XXX.255 format
-     *
+     * @param  string  $broadcastAddress  String containing target broadcast address in XXX.XXX.XXX.255 format
      * @return bool True if given broadcast address is valid
      */
     public static function isBroadcastAddressValid(string $broadcastAddress): bool
@@ -78,10 +77,9 @@ class PHPWakeOnLan
      * Wake up target devices using given mac address(es) to build magic packets
      * and send them to broadcast address.
      *
-     * @param array $macAddresses        Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
-     *                                   format. Only 0-9 and a-f are allowed
-     * @param CidrNetwork|null $cidrNetwork CIDR Network DTO to be able to use CIDR Network Broadcast Addresses.
-     *
+     * @param  array  $macAddresses  Array of mac addresses (or a single string) in XX:XX:XX:XX:XX:XX hexadecimal
+     *                               format. Only 0-9 and a-f are allowed
+     * @param  CidrNetwork|null  $cidrNetwork  CIDR Network DTO to be able to use CIDR Network Broadcast Addresses.
      * @return array Detailed results array with result, bytes sent and a message for each given magic packet
      *
      * @throws \Exception
@@ -97,11 +95,11 @@ class PHPWakeOnLan
             $bytes = $this->udpBroadcastSocket->send($magicPacket, $cidrNetwork ? $cidrNetwork->getBroadcastAddress() : $this->broadcastAddress, $this->port);
             $sendOk = ! empty($bytes) && $bytes > 0;
             $message = $sendOk ? 'Magic packet sent' : '0 bytes sent';
-            $message .= ' to '.$macAddress.' through '. ($cidrNetwork ? $cidrNetwork->getBroadcastAddress() : $this->broadcastAddress);
+            $message .= ' to '.$macAddress.' through '.($cidrNetwork ? $cidrNetwork->getBroadcastAddress() : $this->broadcastAddress);
 
             $result[$macAddress] = [
-                'result'     => $sendOk ? 'OK' : 'KO',
-                'message'    => $message,
+                'result' => $sendOk ? 'OK' : 'KO',
+                'message' => $message,
                 'bytes_sent' => $bytes,
             ];
         }

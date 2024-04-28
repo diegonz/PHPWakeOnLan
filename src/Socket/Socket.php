@@ -17,7 +17,7 @@ class Socket
     /**
      * Socket constructor.
      *
-     * @param int $type Socket type SOL_TCP (6) or SOL_UDP (17)
+     * @param  int  $type  Socket type SOL_TCP (6) or SOL_UDP (17)
      */
     public function __construct(int $type)
     {
@@ -40,10 +40,9 @@ class Socket
     /**
      * Send string through socket to target address.
      *
-     * @param string $string
-     * @param string $address
-     * @param int    $port
-     *
+     * @param  string  $string
+     * @param  string  $address
+     * @param  int  $port
      * @return int
      */
     public function send(string $string, string $address, int $port): int

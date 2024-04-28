@@ -6,18 +6,18 @@ use RuntimeException;
 
 class CidrNetwork
 {
-    /** @var string $networkAddress */
+    /** @var string */
     protected $networkAddress;
 
-    /** @var string $subnetMask */
+    /** @var string */
     protected $subnetMask;
 
-    /** @var string $broadcastAddress */
+    /** @var string */
     protected $broadcastAddress;
 
     /**
-     * @param string $ipAddress         IP Address in the network or Network address of the network.
-     * @param string|int $subnetMask    Subnet Mask as a string or number of bits from CIDR notation
+     * @param  string  $ipAddress  IP Address in the network or Network address of the network.
+     * @param  string|int  $subnetMask  Subnet Mask as a string or number of bits from CIDR notation
      */
     public function __construct(string $ipAddress = '192.168.0.1', $subnetMask = '255.255.255.0')
     {
@@ -69,18 +69,19 @@ class CidrNetwork
         return array_reduce(
             $octets,
             function (string $subnetMask, string $octet) {
-                if (!$subnetMask) {
-                    return $subnetMask . bindec($octet);
+                if (! $subnetMask) {
+                    return $subnetMask.bindec($octet);
                 }
-                return $subnetMask . '.' . bindec($octet);
+
+                return $subnetMask.'.'.bindec($octet);
             },
             ''
         );
     }
 
     /**
-     * @param string $ipAddress         IP Address in the network or Network address of the network.
-     * @param string|int $subnetMask    Subnet Mask as a string or number of bits from CIDR notation
+     * @param  string  $ipAddress  IP Address in the network or Network address of the network.
+     * @param  string|int  $subnetMask  Subnet Mask as a string or number of bits from CIDR notation
      * @return CidrNetwork
      */
     public static function make(string $ipAddress = '192.168.0.1', $subnetMask = '255.255.255.0'): self

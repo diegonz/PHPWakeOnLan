@@ -13,6 +13,6 @@ return [
     /*
      * Integer containing target port to use. Must be 7 or 9.
      */
-    'port'              => 7,
+    'port' => 7,
 
 ];
